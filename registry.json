@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Image Registry",
+  "homepage": "https://prime-ui-mu.vercel.app",
+  "items": [
+    {
+      "name": "image",
+      "type": "registry:ui",
+      "title": "Image",
+      "description": "Reusable image component with LQIP support, fallback states, and skeleton loading",
+      "files": [
+        {
+          "path": "src/components/ui/image.tsx",
+          "type": "registry:component",
+          "target": "src/components/ui/image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Reusable skeleton component perfect for loading states",
+      "files": [
+        {
+          "path": "src/components/ui/image.tsx",
+          "type": "registry:component",
+          "target": "src/components/ui/image.tsx"
+        }
+      ]
+    }
+  ]
+}

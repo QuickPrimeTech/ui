@@ -39,7 +39,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import Logo from "./logo";
+import Logo from "@/components/logo";
 
 const uiItems = getUIPrimitives();
 const componentItems = getComponents();
@@ -67,7 +67,7 @@ export function MobileSidebarTrigger() {
   );
 }
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   const { setOpenMobile } = useSidebar();
   const [searchTerm, setSearchTerm] = useState("");
@@ -118,7 +118,7 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar collapsible="icon" className="rounded-r-xl overflow-hidden">
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <div
           style={{
