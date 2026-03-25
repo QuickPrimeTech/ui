@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack ",
-    "build": "next build",
+    "build": "pnpm registry:build && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "registry:build": "pnpm dlx shadcn@latest build"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -20,7 +20,7 @@ export const InstallSnippet = () => {
   }, [pathname]);
 
   // Build base URL
-  const url = `https://ui.quickprimetech.com/r/${componentName}.json`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentName}.json`;
 
   // Generate snippets dynamically
   const snippets = [
