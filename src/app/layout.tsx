@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/layouts/registry/app-sidebar";
+import { AppHeader } from "@/layouts/registry/app-header";
 
 const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -55,8 +56,9 @@ export default function RootLayout({
                 variant="inset"
                 className="rounded-r-xl overflow-hidden"
               />
-              <SidebarInset className="p-5 md:p-8 space-y-8">
-                {children}
+              <SidebarInset>
+                <AppHeader />
+                <div className="p-5 md:p-8 space-y-8">{children}</div>
               </SidebarInset>
             </TooltipProvider>
           </SidebarProvider>
