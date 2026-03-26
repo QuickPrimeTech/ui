@@ -40,7 +40,11 @@ const navigation: NavItem[] = [
 ];
 
 const resources: NavItem[] = [
-  { title: "GitHub", href: "https://github.com", external: true },
+  {
+    title: "GitHub",
+    href: "https://github.com/QuickPrimeTech/ui",
+    external: true,
+  },
 ];
 
 export function AppHeader({ className }: AppHeaderProps) {
@@ -65,9 +69,9 @@ export function AppHeader({ className }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-all duration-300 rounded-b-xl",
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b shadow-sm"
+          ? "bg-background/80 backdrop-blur-xl border-b"
           : "bg-transparent",
         className,
       )}
@@ -89,7 +93,7 @@ export function AppHeader({ className }: AppHeaderProps) {
               <nav className="hidden md:flex items-center gap-1">
                 {navigation.map((item) => (
                   <Button
-                    variant={isActive(item.href) ? "default" : "secondary"}
+                    variant={isActive(item.href) ? "default" : "ghost"}
                     key={item.href}
                     asChild
                   >
