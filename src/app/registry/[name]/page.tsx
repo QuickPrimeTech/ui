@@ -5,6 +5,7 @@ import type { Component } from "@/lib/registry";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { InstallSnippet } from "@/components/registry/install-snippet";
+import { V0Button } from "@/layouts/registry/v0-button";
 
 // ✅ Lazy component imports
 const componentModules = {
@@ -69,16 +70,6 @@ export default async function RegistryItemPage({
 
   const ComponentToRender = componentMap[name];
 
-  if (!ComponentToRender) {
-    return (
-      <div className="container p-5 md:p-10">
-        <h1 className="text-xl font-semibold">
-          Component "{name}" exists in registry but has no React implementation
-        </h1>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
       <div className="space-y-3">
@@ -90,9 +81,10 @@ export default async function RegistryItemPage({
         )}
       </div>
       <InstallSnippet />
-      <div className="rounded-md border p-6">
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <ComponentToRender />
+      <div className="flex flex-col items-end rounded-md border p-6">
+        <V0Button className="w-fit" />
+        <div className="w-full grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {ComponentToRender && <ComponentToRender />}
         </div>
       </div>
     </div>
