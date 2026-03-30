@@ -10,14 +10,12 @@ type ImageWithFallbackProps = Omit<
   "src"
 > & {
   src: string | null;
-  lqip?: string | null;
   iconProps?: Partial<LucideProps>;
   textProps?: ComponentProps<"span">;
 };
 
 export function Image({
   src,
-  lqip,
   alt,
   iconProps,
   textProps,
@@ -49,24 +47,11 @@ export function Image({
   return (
     <div className="relative w-full h-full">
       {/* Show skeleton while loading if no LQIP */}
-      {isLoading && !lqip && (
-        <Skeleton className="absolute inset-0 w-full h-full" />
+      {isLoading && !props.blurDataURL && (
+        <Skeleton className="absolute inset-0 size-full" />
       )}
 
-      {/* Show LQIP if provided */}
-      {lqip && (
-        <NextImage
-          src={lqip}
-          alt={alt || "Image"}
-          {...props}
-          className={cn(
-            "absolute inset-0 w-full h-full object-cover transition-opacity duration-300",
-            !isLoading ? "opacity-0" : "opacity-100",
-          )}
-        />
-      )}
-
-      <Image
+      <NextImage
         src={src as string}
         alt={alt || "Image"}
         {...props}

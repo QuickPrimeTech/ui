@@ -35,20 +35,20 @@ const images: Image[] = [
   },
 ];
 
-export default () => {
+export default function ImageCards() {
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <>
       {images.map((image) => (
         <Card key={image.title} className="py-0 flex-col-reverse pb-3">
           <CardHeader>
             <CardTitle>{image.title}</CardTitle>
             <CardDescription>{image.description}</CardDescription>
           </CardHeader>
-          <CardContent className="relative h-full bg-yellow-100 aspect-video">
+          <CardContent className="relative h-full px-0 aspect-video">
             <Image
               src={image.src}
               alt={image.title}
-              fill // ✅ Uses container dimensions
+              fill
               sizes="(max-width: 768px) 100vw, 800px"
               placeholder={image.lqip ? "blur" : "empty"}
               blurDataURL={image.lqip ?? undefined}
@@ -57,6 +57,6 @@ export default () => {
           </CardContent>
         </Card>
       ))}
-    </div>
+    </>
   );
-};
+}
