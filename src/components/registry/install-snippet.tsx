@@ -102,7 +102,8 @@ export const InstallSnippet = () => {
                 >
                   <TooltipTrigger asChild>
                     <Button
-                      variant="ghost"
+                      variant="outline"
+                      size={"icon"}
                       className="cursor-pointer"
                       aria-label={`Copy ${activeTab} command`}
                       onClick={() => handleCopy(snippet.code, snippet.filename)}
