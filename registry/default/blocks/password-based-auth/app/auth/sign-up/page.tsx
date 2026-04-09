@@ -1,17 +1,14 @@
 import { Spinner } from "@/components/ui/spinner";
-import { LoginForm } from "@/components/auth/login-form";
+import { SignUpForm } from "@/components/auth/sign-up-form";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Login - GetFifty",
-  description:
-    "Sign in to your GetFifty account to access your dashboard, view your referral link, and track your earnings.",
-  keywords: ["login", "sign in", "account", "dashboard"],
+  title: "Sign Up",
+  description: "Create your account.",
   openGraph: {
-    title: "Login - GetFifty",
-    description:
-      "Access your GetFifty dashboard and track your referral earnings.",
+    title: "Create Account - GetFifty",
+    description: "Create your account today.",
     type: "website",
   },
 };
@@ -21,7 +18,7 @@ export default function Page() {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
         <Suspense fallback={<Spinner />}>
-          <LoginForm />
+          <SignUpForm />
         </Suspense>
       </div>
     </div>

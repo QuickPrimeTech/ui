@@ -20,7 +20,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { OAuthButtons } from "./oAuthButtons";
+import { OAuthButtons } from "@/components/auth/oauth-buttons";
 
 export function LoginForm({
   className,
@@ -133,7 +133,7 @@ export function LoginForm({
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link
-                href={`/auth/create-account${
+                href={`/auth/sign-up${
                   searchParams.get("next")
                     ? `?next=${encodeURIComponent(searchParams.get("next")!)}`
                     : ""

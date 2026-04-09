@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { ShimmeringText } from "@/components/ui/shimmering-text";
 
 const STORAGE_KEY = "install-preference";
 
@@ -62,7 +63,7 @@ export const InstallSnippet = () => {
 
   return (
     <div>
-      <h2 className="mb-2">Installation</h2>
+      <h2 className="mb-2 font-semibold">Installation</h2>
 
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         <TabsList className="mb-2">
@@ -87,11 +88,10 @@ export const InstallSnippet = () => {
               <div
                 className={cn(
                   "relative flex items-center justify-between bg-background rounded-md px-3 py-2",
-                  "before:absolute before:inset-0 before:bg-linear-to-l before:from-inherit before:via-muted before:to-inherit before:opacity-50 before:animate-shimmer-back",
                 )}
               >
                 <pre className="relative whitespace-nowrap min-w-0 truncate font-mono text-sm">
-                  {snippet.code}
+                  <ShimmeringText text={snippet.code} />
                 </pre>
 
                 <Tooltip

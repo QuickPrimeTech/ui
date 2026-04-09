@@ -2,7 +2,7 @@ import ErrorContent from "@/components/auth/error-content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Error - GetFifty",
+  title: "Error",
   description: "Something went wrong. Please try again or contact support.",
   robots: { index: false, follow: false },
 };
