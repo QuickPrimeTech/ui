@@ -116,7 +116,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </span>
           </Link>
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
             className="ml-auto md:hidden"
             onClick={() => setOpenMobile(false)}

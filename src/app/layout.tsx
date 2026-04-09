@@ -8,7 +8,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/layouts/registry/app-sidebar";
 import { AppHeader } from "@/layouts/registry/app-header";
 
-const notoSans = Noto_Sans({subsets:['latin'],variable:'--font-sans'});
+const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,7 +53,7 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <TooltipProvider>
-              <AppSidebar variant="floating" />
+              <AppSidebar variant="floating" className="rounded-r-2xl" />
               <SidebarInset>
                 <AppHeader />
                 <div className="p-5 md:p-8 space-y-8">{children}</div>

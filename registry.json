@@ -10,9 +10,9 @@
       "description": "Reusable image component with LQIP support, fallback states, and skeleton loading",
       "files": [
         {
-          "path": "src/components/ui/image.tsx",
+          "path": "registry/default/ui/image.tsx",
           "type": "registry:component",
-          "target": "src/components/ui/image.tsx"
+          "target": "components/ui/image.tsx"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "description": "Reusable skeleton component with shimmer animation",
       "files": [
         {
-          "path": "src/components/ui/skeleton.tsx",
+          "path": "registry/default/ui/skeleton.tsx",
           "type": "registry:ui",
           "target": "components/ui/skeleton.tsx"
         }
@@ -37,23 +37,125 @@
         "@layer base": {
           "@keyframes shimmer": {
             "from": { "transform": "translateX(-100%)" },
-            "to": { "transform": "translateX(100%)" }
+            "to": { "transform": "translateX(200%)" }
           }
         }
       }
     },
     {
-      "name": "authentication",
-      "type": "registry:block",
-      "title": "Authentication",
-      "description": "One time setup for the authentication that doesn't need any refactoring",
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Reusable image component with LQIP support, fallback states, and skeleton loading",
       "files": [
         {
-          "path": "src/components/ui/skeleton.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/skeleton.tsx"
+          "path": "registry/default/ui/image.tsx",
+          "type": "registry:component",
+          "target": "components/ui/image.tsx"
         }
       ]
+    },
+    {
+      "name": "password-based-auth-nextjs",
+      "type": "registry:block",
+      "title": "Authentication",
+      "description": "Password Based Auth flow for Nextjs and Supabase",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "input-group"
+      ],
+      "dependencies": ["@supabase/ssr@latest", "@supabase/supabase-js@latest"],
+      "files": [
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/login/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/login/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/error/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/error/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/protected/page.tsx",
+          "type": "registry:page",
+          "target": "app/protected/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/confirm/route.ts",
+          "type": "registry:page",
+          "target": "app/auth/confirm/route.ts"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/components/auth/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/middleware.ts",
+          "type": "registry:file",
+          "target": "middleware.ts"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/sign-up/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/sign-up/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/sign-up-success/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/sign-up-success/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/components/auth/sign-up-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/forgot-password/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/forgot-password/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/app/auth/update-password/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth/update-password/page.tsx"
+        },
+        {
+          "path": "registry/default/ui/spinner",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/components/auth/forgot-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/components/auth/update-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/password-based-auth-nextjs/components/auth/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/clients/nextjs/lib/supabase/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/default/clients/nextjs/lib/supabase/middleware.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/default/clients/nextjs/lib/supabase/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variables in your project: `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.",
+      "envVars": {
+        "NEXT_PUBLIC_SUPABASE_URL": "",
+        "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": ""
+      }
     }
   ]
 }

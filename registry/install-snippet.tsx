@@ -10,6 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "install-preference";
 
@@ -83,8 +84,13 @@ export const InstallSnippet = () => {
             >
               <div className="absolute inset-0 rounded-md bg-[linear-gradient(90deg,var(--color-primary),#f43f5e,#10b981,var(--color-primary))] bg-size-[200%_100%] animate-[gradientMove_2s_linear_infinite]" />
 
-              <div className="relative flex items-center justify-between bg-muted rounded-md px-3 py-2">
-                <pre className="whitespace-pre-wrap font-mono text-sm">
+              <div
+                className={cn(
+                  "relative flex items-center justify-between bg-background rounded-md px-3 py-2",
+                  "before:absolute before:inset-0 before:bg-linear-to-l before:from-inherit before:via-muted before:to-inherit before:opacity-50 before:animate-shimmer-back",
+                )}
+              >
+                <pre className="relative whitespace-nowrap min-w-0 truncate font-mono text-sm">
                   {snippet.code}
                 </pre>
 
@@ -108,11 +114,7 @@ export const InstallSnippet = () => {
                       aria-label={`Copy ${activeTab} command`}
                       onClick={() => handleCopy(snippet.code, snippet.filename)}
                     >
-                      {isCopied ? (
-                        <Check className="text-green-500" />
-                      ) : (
-                        <Copy />
-                      )}
+                      {isCopied ? <Check /> : <Copy />}
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>

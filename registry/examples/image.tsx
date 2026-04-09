@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Image } from "@/components/ui/image";
+import { Image } from "@ui/image";
 
 type Image = {
   title: string;

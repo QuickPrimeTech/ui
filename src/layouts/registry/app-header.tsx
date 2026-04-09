@@ -76,7 +76,7 @@ export function AppHeader({ className }: AppHeaderProps) {
         className,
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex gap-3 items-center">
             <SidebarTrigger />

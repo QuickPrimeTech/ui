@@ -5,7 +5,7 @@
   "description": "Reusable skeleton component with shimmer animation",
   "files": [
     {
-      "path": "src/components/ui/skeleton.tsx",
+      "path": "registry/default/ui/skeleton.tsx",
       "content": "import { cn } from \"@/lib/utils\";\n\nexport function Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\n        \"relative overflow-hidden bg-muted rounded-md\",\n        \"before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer\",\n        \"before:bg-linear-to-r before:from-transparent before:via-foreground/10 before:to-transparent\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/ui/skeleton.tsx"
@@ -23,7 +23,7 @@
           "transform": "translateX(-100%)"
         },
         "to": {
-          "transform": "translateX(100%)"
+          "transform": "translateX(200%)"
         }
       }
     }

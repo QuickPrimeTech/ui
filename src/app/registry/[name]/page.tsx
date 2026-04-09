@@ -3,12 +3,12 @@ import dynamic from "next/dynamic";
 
 import { getRegistryItem } from "@/lib/registry";
 import type { Component } from "@/lib/registry";
-import { InstallSnippet } from "@/components/registry/install-snippet";
+import { InstallSnippet } from "@registry/install-snippet";
 import { V0Button } from "@/layouts/registry/v0-button";
 
 // Utility to dynamically import a component by its name
 function getDynamicComponent(name: string) {
-  return dynamic(() => import(`@/components/registry/examples/${name}`), {
+  return dynamic(() => import(`@registry/examples/${name}`), {
     ssr: true, // or false if the component should only render client-side
     loading: () => <div className="h-32 animate-pulse bg-muted rounded-md" />,
   });
@@ -45,9 +45,10 @@ export default async function RegistryItemPage({
 
       <InstallSnippet />
 
-      <div className="flex flex-col items-end gap-6 rounded-md border p-6">
-        <V0Button className="w-fit" />
-        <div className="w-full grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="relative flex flex-col items-end gap-6 rounded-md border p-6">
+        <div className="absolute inset-0 z-0 bg-background bg-[radial-gradient(circle,var(--muted-foreground)_1.5px,transparent_1.5px)] bg-size-[20px_20px] bg-position-[0_0] dark:opacity-20 opacity-30" />
+        <V0Button className="relative w-fit" />
+        <div className="relative w-full grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <ComponentToRender />
         </div>
       </div>

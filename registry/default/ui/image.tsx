@@ -3,7 +3,7 @@ import NextImage from "next/image";
 import { ComponentProps, useState } from "react";
 import { ImageOff, LucideProps } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "./skeleton";
 
 type ImageWithFallbackProps = Omit<
   React.ComponentProps<typeof NextImage>,

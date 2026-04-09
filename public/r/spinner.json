@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "image",
-  "title": "Image",
+  "name": "spinner",
+  "title": "Spinner",
   "description": "Reusable image component with LQIP support, fallback states, and skeleton loading",
   "files": [
     {
