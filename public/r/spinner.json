@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "Reusable image component with LQIP support, fallback states, and skeleton loading",
+  "files": [
+    {
+      "path": "registry/default/ui/image.tsx",
+      "content": "\"use client\";\r\nimport NextImage from \"next/image\";\r\nimport { ComponentProps, useState } from \"react\";\r\nimport { ImageOff, LucideProps } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Skeleton } from \"./skeleton\";\r\n\r\ntype ImageWithFallbackProps = Omit<\r\n  React.ComponentProps<typeof NextImage>,\r\n  \"src\"\r\n> & {\r\n  src: string | null;\r\n  iconProps?: Partial<LucideProps>;\r\n  textProps?: ComponentProps<\"span\">;\r\n};\r\n\r\nexport function Image({\r\n  src,\r\n  alt,\r\n  iconProps,\r\n  textProps,\r\n  ...props\r\n}: ImageWithFallbackProps) {\r\n  const [imageError, setImageError] = useState(false);\r\n  const [isLoading, setIsLoading] = useState(true);\r\n\r\n  // Show fallback if src is null or empty, or if image fails to load\r\n  const showFallback = !src || imageError;\r\n\r\n  if (showFallback) {\r\n    return (\r\n      <div className=\"w-full h-full bg-muted flex flex-col items-center justify-center text-muted-foreground\">\r\n        <ImageOff\r\n          className={cn(\"size-8 mb-2 opacity-50\", iconProps?.className)}\r\n          {...iconProps}\r\n        />\r\n        <span\r\n          className={cn(\"text-sm font-medium\", textProps?.className)}\r\n          {...textProps}\r\n        >\r\n          {!src ? \"No Image\" : \"Failed to load\"}\r\n        </span>\r\n      </div>\r\n    );\r\n  }\r\n\r\n  return (\r\n    <div className=\"relative w-full h-full\">\r\n      {/* Show skeleton while loading if no LQIP */}\r\n      {isLoading && !props.blurDataURL && (\r\n        <Skeleton className=\"absolute inset-0 size-full\" />\r\n      )}\r\n\r\n      <NextImage\r\n        src={src as string}\r\n        alt={alt || \"Image\"}\r\n        {...props}\r\n        onLoad={() => setIsLoading(false)}\r\n        onError={() => setImageError(true)}\r\n        className={cn(\r\n          \"transition-opacity duration-300\",\r\n          isLoading ? \"opacity-0\" : \"opacity-100\",\r\n          props.className,\r\n        )}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/ui/image.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

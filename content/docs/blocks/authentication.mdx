@@ -1,0 +1,49 @@
+---
+title: Password Auth
+description: Password-based authentication block for Next.js
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { V0Button } from "@/components/ui/v0-button";
+
+## Why not use Supabase UI?
+
+Don't get me wrong, the password-based authentication for Supabase is good. But let's be honest, it's kinda stuck in the past.
+
+### Key issues with supabase ui block:
+
+- **Outdated file naming conventions** — They still use legacy names such as `middleware.ts` while Next.js 16 and later use `proxy.ts`
+
+- **Modern framework alignment** — The Supabase UI components haven't fully adapted to the latest Next.js architectural changes
+
+- **Technical debt** — Continuing with legacy patterns creates maintenance overhead and confusion for developers using newer Next.js versions
+
+**The fix:** I've updated these legacy naming conventions and outdated patterns to align with modern Next.js standards (v16+).
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tab value="CLI">
+    ```npm
+    npx shadcn@latest add https://ui.quickprimetech.com/r/password-based-auth.json
+    ```
+    <V0Button>Open in V0</V0Button>
+  </Tab>
+  <Tab value="Manual">
+    ```tsx
+    coming soon
+    ```
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+<Callout type="info">
+  Once installed, configure your environment variables:
+</Callout>
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your-url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-key
+```

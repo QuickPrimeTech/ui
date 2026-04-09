@@ -5,6 +5,7 @@ description: Reusable image component with LQIP support, fallback states, and sk
 
 import { Image } from "@registry/default/ui/image";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { V0Button } from "@/components/ui/v0-button";
 
 A powerful image component that extends Next.js Image with built-in loading states, error fallbacks, and Low Quality Image Placeholder (LQIP) support.
 
@@ -17,9 +18,92 @@ A powerful image component that extends Next.js Image with built-in loading stat
 
 ## Installation
 
-```npm
-npx shadcn@latest add image
-```
+<Tabs items={["CLI", "Manual"]}>
+  <Tab value="CLI">
+    ```npm
+    npx shadcn@latest add https://ui.quickprimetech.com/r/image.json
+    ```
+    <V0Button>Open in V0</V0Button>
+  </Tab>
+  <Tab value="Manual">
+    ```tsx
+
+"use client";
+import NextImage from "next/image";
+import { ComponentProps, useState } from "react";
+import { ImageOff, LucideProps } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "./skeleton";
+
+type ImageWithFallbackProps = Omit<
+React.ComponentProps<typeof NextImage>,
+"src"
+
+> & {
+> src: string | null;
+> iconProps?: Partial<LucideProps>;
+> textProps?: ComponentProps<"span">;
+> };
+
+export function Image({
+  src,
+  alt,
+  iconProps,
+  textProps,
+  ...props
+}: ImageWithFallbackProps) {
+  const [imageError, setImageError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+// Show fallback if src is null or empty, or if image fails to load
+const showFallback = !src || imageError;
+
+if (showFallback) {
+return (
+
+<div className="w-full h-full bg-muted flex flex-col items-center justify-center text-muted-foreground">
+<ImageOff
+className={cn("size-8 mb-2 opacity-50", iconProps?.className)}
+{...iconProps}
+/>
+<span
+className={cn("text-sm font-medium", textProps?.className)}
+{...textProps} >
+{!src ? "No Image" : "Failed to load"}
+</span>
+</div>
+);
+}
+
+return (
+
+<div className="relative w-full h-full">
+{/* Show skeleton while loading if no LQIP */}
+{isLoading && !props.blurDataURL && (
+<Skeleton className="absolute inset-0 size-full" />
+)}
+
+      <NextImage
+        src={src as string}
+        alt={alt || "Image"}
+        {...props}
+        onLoad={() => setIsLoading(false)}
+        onError={() => setImageError(true)}
+        className={cn(
+          "transition-opacity duration-300",
+          isLoading ? "opacity-0" : "opacity-100",
+          props.className,
+        )}
+      />
+    </div>
+
+);
+}
+
+````
+
+  </Tab>
+</Tabs>
 
 ## Examples
 
@@ -185,3 +269,4 @@ Use `iconProps` and `textProps` to restyle or replace the fallback content.
 | `iconProps`   | `Partial<LucideProps>`   | —         | Forwarded to the `ImageOff` icon in fallback states. Override `size`, `color`, `strokeWidth`, etc. |
 | `textProps`   | `ComponentProps<"span">` | —         | Forwarded to the fallback label. Override the message via `children` or restyle with `className`.  |
 | `...props`    | `NextImageProps`         | —         | All other `next/image` props — `fill`, `width`, `height`, `sizes`, `priority`, `className`, etc.   |
+````

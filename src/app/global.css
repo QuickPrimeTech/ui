@@ -92,7 +92,7 @@ html > body[data-scroll-locked] {
   --card-foreground: oklch(0.2046 0 0);
   --popover: oklch(0.9911 0 0);
   --popover-foreground: oklch(0.4386 0 0);
-  --primary: oklch(0.8348 0.1302 160.908);
+  --primary: oklch(64.18% 0.15404 154.864);
   --primary-foreground: oklch(0.2626 0.0147 166.4589);
   --secondary: oklch(0.994 0 0);
   --secondary-foreground: oklch(0.2046 0 0);
@@ -218,12 +218,12 @@ html > body[data-scroll-locked] {
     @apply font-sans;
   }
 
-@keyframes shimmer {
-  from {
-    transform: translateX(-100%);
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
     }
-  to {
-    transform: translateX(200%);
+    to {
+      transform: translateX(200%);
     }
   }
 }
