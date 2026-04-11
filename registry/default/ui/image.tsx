@@ -38,7 +38,11 @@ export function Image({
           className={cn("text-sm font-medium", textProps?.className)}
           {...textProps}
         >
-          {!src ? "No Image" : "Failed to load"}
+          {textProps?.children
+            ? textProps?.children
+            : !src
+              ? "No Image"
+              : "Failed to load"}
         </span>
       </div>
     );
