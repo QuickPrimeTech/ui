@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-16">
+    <div className="relative flex flex-col items-center justify-center px-4 py-16 overflow-hidden">
       {/* Grid background - uses foreground with low opacity */}
       <div
         className="pointer-events-none absolute inset-0 opacity-40 -z-3"
@@ -55,7 +55,12 @@ export default function HomePage() {
             Check Docs
           </Link>
         </Button>
-        <Button variant={"outline"} size={"xl"} asChild>
+        <Button
+          variant={"outline"}
+          size={"xl"}
+          className="max-sm:flex-1"
+          asChild
+        >
           <Link href="#sandbox">
             <SandboxIcon />
             Open in Sandbox
