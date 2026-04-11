@@ -48,8 +48,8 @@ export default function HomePage() {
       </p>
 
       {/* CTA buttons */}
-      <div className="flex flex-wrap justify-center gap-3 w-full max-w-md">
-        <Button asChild size={"xl"} className="flex-1">
+      <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-md">
+        <Button asChild size={"xl"} className="sm:flex-1">
           <Link href="/docs">
             <DocIcon />
             Check Docs
